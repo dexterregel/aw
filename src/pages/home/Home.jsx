@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
   getFilteredBucketData,
   getImageUrl
@@ -47,6 +48,7 @@ export default function Home() {
           {images[1]}
           <p>Our operation is built upon the knowledge and skills that our dedicated staff bring to the table (whether your boardroom table or our saw tables). When you work with us, you're working with people who have a long tenure of craftsmanship backed by industry certifications and awards.</p>
         </section>
+        <p>View the <Link to='services'>services</Link> we offer, our <Link to='gallery'>gallery</Link> for examples of our work, and <Link to='contact'>contact us</Link> if you're interested in doing business.</p>
       </div>
     </main>
   );
