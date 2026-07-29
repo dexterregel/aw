@@ -13,10 +13,10 @@ export function getChildDirs(parentDir, paths) {
   const set = new Set();
   for (const path of paths) {
     set.add((path.split('/')[parentDirIndex + 1]));
-  }
+  };
   // convert the set back to an array and return it
   return Array.from(set);
-}
+};
 
 // returns the file name from an absolute path
 // by default it includes the file extension
@@ -24,9 +24,9 @@ export function getFileNameFromPath(path, getFileExt = true) {
   let fileName = path.split('/')[path.split('/').length - 1];
   if (!getFileExt) {
     fileName = fileName.split('.')[0];
-  }
+  };
   return fileName;
-}
+};
 
 // gets the contents of the specified public s3 bucket
 // returns an xml doc
@@ -36,11 +36,11 @@ export async function getBucketContents(bucketName) {
     if (res.ok) {
       const data = await res.text();
       return data;
-    }
+    };
   } catch (err) {
     console.error(err.message);
-  }
-}
+  };
+};
 
 // the bucketContents param expects an xml doc
 export async function getFilteredBucketContents(bucketName, filter) {
@@ -52,11 +52,11 @@ export async function getFilteredBucketContents(bucketName, filter) {
       // filter out the result that isn't a file
       if (image === `images/${filter}/` || image === `images/gallery/${filter}/`) {
         return false;
-      }
+      };
       return image.includes(filter);
     });
   return filteredBucketContents;
-}
+};
 
 
 // gets data from the specified public s3 bucket
@@ -74,8 +74,8 @@ export async function getBucketData(bucketName) {
     return jsonData;
   } catch (err) {
     console.error(err.message);
-  }
-}
+  };
+};
 
 export async function getFilteredBucketData(
   filter,
@@ -90,11 +90,11 @@ export async function getFilteredBucketData(
       // filter out results that are dirs
       if (image.charAt(image.length - 1) === '/') {
         return false;
-      }
+      };
       return image.includes(filter);
     });
   return filteredBucketData;
-}
+};
 
 export function getImageUrl(
   path,
@@ -102,7 +102,7 @@ export function getImageUrl(
   bucketRegion = 'us-east-1'
 ) {
   return `http://${bucketName}.s3.${bucketRegion}.amazonaws.com/${path}`;
-}
+};
 
 /*
   This function accepts an array of image paths, and the name of a parent directory.
@@ -134,17 +134,17 @@ export function getFirstImagePaths(parentDir, imagePaths) {
   const childDirs = getChildDirs(parentDir, imagePaths);
   const firstImagePaths = [];
   childDirs.forEach(dir => {
-    const firstImage = {}
+    const firstImage = {};
     firstImage.dir = dir;
     firstImage.absPath = imagePaths.find(path => path.includes(dir));
     firstImagePaths.push(firstImage);
   });
   return firstImagePaths;
-}
+};
 
 /*
   Formats the supplied string into a title.
 */
 export function formatToTitle(string) {
   return string.charAt(0).toUpperCase() + string.replaceAll('-', ' ').slice(1);
-}
+};
