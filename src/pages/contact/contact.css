@@ -1,5 +1,3 @@
-
-
 .address-container {
   width: fit-content;
   display: flex;
@@ -32,7 +30,6 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   gap: 1em;
   border: 1px solid #121212;
   padding: 1em;
@@ -67,6 +64,7 @@
 }
 
 .form-field textarea {
+  min-height: 30px;
   height: 100px;
   resize: vertical;
 }
@@ -95,6 +93,15 @@
 .contact-form button:active {
   box-shadow: 0 1px 1px #121212;
   transform: translateY(1px);
+}
+
+/* contact form confirmation */
+.confirmation {
+  text-align: center;
+}
+
+.confirmation p {
+  margin: 0 auto 2em auto;
 }
 
 /* mobile */
