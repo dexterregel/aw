@@ -17,7 +17,7 @@ export default function Gallery() {
   let firstImagePaths = [];
   if (imagePaths.length > 0) {
     firstImagePaths = getFirstImagePaths('gallery', imagePaths);
-  }
+  };
 
   // effects
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function Gallery() {
       const filteredBucketData = await getFilteredBucketData('gallery');
       setImagePaths(filteredBucketData);
       setIsLoading(false);
-    }
+    };
     fetchData();
   }, []);
 
@@ -42,11 +42,11 @@ export default function Gallery() {
         />
       );
     });
-  }
+  };
 
   if (isLoading) {
     return <Loading />;
-  }
+  };
 
   return (
     <main>
@@ -57,4 +57,4 @@ export default function Gallery() {
       </div>
     </main>
   );
-}
+};
