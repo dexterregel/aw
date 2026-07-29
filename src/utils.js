@@ -83,7 +83,6 @@ export async function getFilteredBucketData(
 ) {
   const bucketData = await getBucketData(bucketName);
   // parse the returned data based on the supplied filter
-
   const filteredBucketData = bucketData.ListBucketResult.Contents
     .map(image => image.Key)
     .filter(image => {
