@@ -74,7 +74,7 @@ main.services {
   }
 
   .service-item a:hover,
-.service-item a:active {
-  color: gold;
-}
+  .service-item a:active {
+    color: gold;
+  }
 }
