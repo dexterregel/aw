@@ -19,7 +19,7 @@ export default function Home() {
       const filteredBucketData = await getFilteredBucketData('home');
       setImagePaths(filteredBucketData);
       setIsLoading(false);
-    }
+    };
     fetchData();
   }, []);
 
@@ -30,11 +30,11 @@ export default function Home() {
         <img key={index} src={getImageUrl(path)} />
       );
     });
-  }
+  };
 
   if (isLoading) {
     return <Loading />;
-  }
+  };
 
   return (
     <main>
@@ -52,4 +52,4 @@ export default function Home() {
       </div>
     </main>
   );
-}
+};
