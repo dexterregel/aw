@@ -28,40 +28,9 @@ export function getFileNameFromPath(path, getFileExt = true) {
   return fileName;
 };
 
-// gets the contents of the specified public s3 bucket
-// returns an xml doc
-export async function getBucketContents(bucketName) {
-  try {
-    const res = await fetch(`http://s3.amazonaws.com/${bucketName}`);
-    if (res.ok) {
-      const data = await res.text();
-      return data;
-    };
-  } catch (err) {
-    console.error(err.message);
-  };
-};
-
-// the bucketContents param expects an xml doc
-export async function getFilteredBucketContents(bucketName, filter) {
-  const parser = new XMLParser();
-  const json = parser.parse(bucketContents);
-  const filteredBucketContents = json.ListBucketResult.Contents
-    .map(image => image.Key)
-    .filter(image => {
-      // filter out the result that isn't a file
-      if (image === `images/${filter}/` || image === `images/gallery/${filter}/`) {
-        return false;
-      };
-      return image.includes(filter);
-    });
-  return filteredBucketContents;
-};
-
-
 // gets data from the specified public s3 bucket
 export async function getBucketData(bucketName) {
-  const bucketUrl = `http://s3.amazonaws.com/${bucketName}`;
+  const bucketUrl = `https://s3.amazonaws.com/${bucketName}`;
   try {
     const res = await fetch(bucketUrl);
     if (!res.ok) {
@@ -81,19 +50,23 @@ export async function getFilteredBucketData(
   filter,
   bucketName = 'aww-assets-961743401958-us-east-1-an'
 ) {
-  const bucketData = await getBucketData(bucketName);
-  // parse the returned data based on the supplied filter
-
-  const filteredBucketData = bucketData.ListBucketResult.Contents
-    .map(image => image.Key)
-    .filter(image => {
-      // filter out results that are dirs
-      if (image.charAt(image.length - 1) === '/') {
-        return false;
-      };
-      return image.includes(filter);
-    });
-  return filteredBucketData;
+  try {
+    const bucketData = await getBucketData(bucketName);
+    // parse the returned data based on the supplied filter
+    const filteredBucketData = bucketData.ListBucketResult.Contents
+      .map(image => image.Key)
+      .filter(image => {
+        // filter out results that are dirs
+        if (image.charAt(image.length - 1) === '/') {
+          return false;
+        };
+        return image.includes(filter);
+      });
+    return filteredBucketData;
+  } catch (err) {
+    console.error(err.message);
+    return;
+  };
 };
 
 export function getImageUrl(
@@ -101,7 +74,7 @@ export function getImageUrl(
   bucketName = 'aww-assets-961743401958-us-east-1-an',
   bucketRegion = 'us-east-1'
 ) {
-  return `http://${bucketName}.s3.${bucketRegion}.amazonaws.com/${path}`;
+  return `https://${bucketName}.s3.${bucketRegion}.amazonaws.com/${path}`;
 };
 
 /*
