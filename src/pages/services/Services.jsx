@@ -3,7 +3,7 @@ import './services.css';
 
 export default function Services() {
   return (
-    <main>
+    <main className='services'>
       <h1 className='page-title'>Services</h1>
       <p className='page-descript'>We offer the following services. Select one to view more details:</p>
       <div className='service-container'>
