@@ -11,9 +11,9 @@ export default function ContactForm() {
     try {
       const res = await fetch(url, {
         method: 'POST',
-        body: JSON.stringify({ email, message })
+        body: JSON.stringify({ name, email, message })
       });
-      
+
       if (!res.ok) {
         throw new Error(`Error: ${res.status}`);
       };
