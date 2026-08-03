@@ -6,7 +6,7 @@ export default function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   async function submitForm(formData) {
-    const { email, message } = Object.fromEntries(formData);
+    const { name, email, message } = Object.fromEntries(formData);
     const url = 'https://idpregonp2.execute-api.us-east-1.amazonaws.com/v1/contact';
     try {
       const res = await fetch(url, {
@@ -61,8 +61,7 @@ export default function ContactForm() {
             id='message'
             name='message'
             autoComplete='off'
-            required>
-          </textarea>
+            required></textarea>
         </div>
 
         <button type='submit' className='submit'>Submit</button>
