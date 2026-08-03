@@ -24,7 +24,7 @@ export default function GalleryType() {
       const filteredBucketData = await getFilteredBucketData(params.galleryType);
       setImagePaths(filteredBucketData);
       setIsLoading(false);
-    }
+    };
     fetchData();
   }, []);
 
@@ -35,8 +35,8 @@ export default function GalleryType() {
     } else {
       setImageIndex(Number(e.target.id));
       setShowBackdrop(true);
-    }
-  }
+    };
+  };
 
   const galleryImages = imagePaths.map((path, index) => {
     return (
@@ -53,7 +53,7 @@ export default function GalleryType() {
 
   if (isLoading) {
     return <Loading />;
-  }
+  };
 
   return (
     <main>
@@ -67,4 +67,4 @@ export default function GalleryType() {
       {showBackdrop ? <div className='backdrop' onClick={zoomImage} /> : null}
     </main>
   );
-}
+};

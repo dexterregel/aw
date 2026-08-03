@@ -29,7 +29,7 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 // leaving the following commented in order to later implement ScrollRestoration
 

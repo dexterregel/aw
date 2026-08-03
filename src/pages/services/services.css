@@ -1,3 +1,9 @@
+main.services {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .service-container {
   width: 50vw;
   display: flex;
