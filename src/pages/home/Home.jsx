@@ -41,7 +41,7 @@ export default function Home() {
       <h1 className='page-title'>Premier Woodworking Specialists</h1>
       <div className='home-container'>
         <section className='home-item'>
-          <p>Since 1987, we've manufacture wood products for a wide variety of clients. Our industrial manufacturing facility, located in St. Petersburg, FL, encompasses 19,000 square feet. Take a moment to learn how our commitment to quality and service can put a signature of success on your woodworking products.</p>
+          <p>Since 1987, we've manufactured wood products for a wide variety of clients. Our industrial manufacturing facility, located in St. Petersburg, FL, encompasses 19,000 square feet. Take a moment to learn how our commitment to quality and service can put a signature of success on your woodworking products.</p>
           {images[0]}
         </section>
         <section className='home-item'>
