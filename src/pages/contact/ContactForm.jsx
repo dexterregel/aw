@@ -28,7 +28,7 @@ export default function ContactForm() {
   return (
     isSubmitted
     ? <div className='confirmation'>
-        <p>Thanks! We'll review your message and get back to you within 48 hours.</p>
+        <p>Thanks for your message! We'll review it and get back to you soon.</p>
       </div>
     : <form className='contact-form' action={submitForm}>
         <p>Interested in doing business with us? Send a message!</p>
