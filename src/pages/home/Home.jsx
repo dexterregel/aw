@@ -37,7 +37,7 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <main className='home'>
       <h1 className='page-title'>Premier Woodworking Specialists</h1>
       <div className='home-container'>
         <section className='home-item'>
